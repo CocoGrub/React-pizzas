@@ -17,7 +17,7 @@ function App() {
             <div className="content__top">
               <Categories
                 click={click}
-                data={['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
+                data={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
               />
               <div className="sort">
                 <div className="sort__label">
