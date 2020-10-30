@@ -30,7 +30,7 @@ const Sort = ({data}) => {
     return (    
         <div className="sort" ref={sortRef}>
         <div className="sort__label" >
-          <svg
+          <svg className={popup?'rotated':''}
             width="10"
             height="6"
             viewBox="0 0 10 6"
