@@ -22,7 +22,7 @@ const Sort = ({data}) => {
         }
       
     const domListener=(e)=>{
-      if(!sortRef.current.contains(e.target)){
+      if(sortRef.current &&!sortRef.current.contains(e.target)){ //sortRef.current && react-router Link fixed
            setPopup(false)
          }
       }
