@@ -2,7 +2,9 @@ import React,{useState} from 'react'
 
 const Sort = () => {
     const [popup,setPopup]=useState(false)
-
+    const setVisible=()=>{
+        setPopup(!popup)
+    }
     return (    
         <div className="sort">
         <div className="sort__label">
@@ -18,7 +20,7 @@ const Sort = () => {
             />
           </svg>
           <b>Сортировка по:</b>
-          <span onClick={()=>setPopup(!popup)}>популярности</span>
+          <span onClick={setVisible}>популярности</span>
         </div>
         {popup&&<div className="sort__popup">
           <ul>
