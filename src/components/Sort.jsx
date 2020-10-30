@@ -1,13 +1,27 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 
 const Sort = () => {
     const [popup,setPopup]=useState(false)
-    const setVisible=()=>{
-        setPopup(!popup)
-    }
+    const sortRef=useRef()
+  
+    useEffect(()=>{
+      document.addEventListener('click',domListener)
+    },[])
+  
+    const setVisible=(e)=>{
+      setPopup(!popup)
+     
+        }
+      
+    const domListener=(e)=>{
+      if(!sortRef.current.contains(e.target)){
+           setPopup(false)
+         }
+      }
+  
     return (    
-        <div className="sort">
-        <div className="sort__label">
+        <div className="sort" ref={sortRef}>
+        <div className="sort__label" >
           <svg
             width="10"
             height="6"
@@ -22,13 +36,13 @@ const Sort = () => {
           <b>Сортировка по:</b>
           <span onClick={setVisible}>популярности</span>
         </div>
-        {popup&&<div className="sort__popup">
+        {popup&&(<div className="sort__popup">
           <ul>
             <li className="active">популярности</li>
             <li>цене</li>
             <li>алфавиту</li>
           </ul>
-        </div>}
+        </div>)}
       </div>
     )
 }
