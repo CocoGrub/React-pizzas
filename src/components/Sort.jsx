@@ -1,13 +1,21 @@
 import React,{useState,useEffect,useRef} from 'react'
 
-const Sort = () => {
+const Sort = ({data}) => {
     const [popup,setPopup]=useState(false)
     const sortRef=useRef()
-  
+    const [currentItem,setCurrentItem]=useState(0)
+
+    const activeLabel=data[currentItem]
+
     useEffect(()=>{
       document.addEventListener('click',domListener)
     },[])
   
+    const hideItemsAfterSelect=(index)=>{
+      setCurrentItem(index)
+      setPopup(false)
+    }
+
     const setVisible=(e)=>{
       setPopup(!popup)
      
@@ -34,13 +42,18 @@ const Sort = () => {
             />
           </svg>
           <b>Сортировка по:</b>
-          <span onClick={setVisible}>популярности</span>
+          <span onClick={setVisible}>{activeLabel}</span>
         </div>
         {popup&&(<div className="sort__popup">
           <ul>
-            <li className="active">популярности</li>
-            <li>цене</li>
-            <li>алфавиту</li>
+            {data.map((item,index)=>{
+              return(
+              <li className={index===currentItem?'active':''} 
+                  key={item+index}
+                  onClick={()=>{hideItemsAfterSelect(index)}}
+                  >{item}</li>
+              )
+            })}
           </ul>
         </div>)}
       </div>

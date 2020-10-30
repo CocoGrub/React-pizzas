@@ -18,7 +18,7 @@ function App() {
                 click={click}
                 data={['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']}
               />
-              <Sort />
+              <Sort data={['Популярности', 'Цене', 'Aлфавиту']} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
