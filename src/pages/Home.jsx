@@ -14,7 +14,7 @@ const Home = ({items}) => {
         <h2 className="content__title">Все пиццы</h2>
         <div className="content__items">
           {items.map((item,index)=>{
-            return  <PizzaBlock key={item.name+index} name={item.name} />
+            return  <PizzaBlock key={item.name+index} {...item} />
           })}
         </div>
       </div>
