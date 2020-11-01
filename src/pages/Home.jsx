@@ -1,8 +1,12 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import {Sort,Categories,PizzaBlock} from '../components/index'
 
-const Home = ({items}) => {
-  console.log(items);
+const Home = () => {
+  const { items } = useSelector((state) => ({
+    items: state.pizzas.items,
+    sortBy: state.filters.sortBy,
+  }));
     return (
         <div className="container">
         <div className="content__top">

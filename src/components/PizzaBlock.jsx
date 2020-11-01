@@ -5,7 +5,7 @@ import classNames from 'classnames';
 function PizzaBlock({name,imageUrl,price,types,sizes}) {
     const [activeType,setActiveType]=useState(types[0])
     const [activeSize,setActiveSize]=useState(sizes[0])
-    console.log(activeSize);
+    
     const availableTypes = ['тонкое','традиционное'] //все равно рендерим массив, вне зависимости от наличия в types такого теста
     const availableSizes = [26,30,40]
 
