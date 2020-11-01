@@ -1,14 +1,15 @@
 const initialState = {
-  pizzas: [],
+  category: 0,
+  sortBy: 'popular',
 };
 
-const pizzas = (state = initialState, action) => {
+const filtersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_PIZZAS':
-      return { ...state, pizzas: action.payload };
+    case 'SET_SORT':
+      return { ...state, sortBy: action.payload };
     default:
       return state;
   }
 };
 
-export default pizzas;
+export default filtersReducer;
