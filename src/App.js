@@ -18,10 +18,10 @@ function App() {
       });
   };
   React.useEffect(() => {
-    fetch('http://localhost:3000/db.json')
+    fetch('http://localhost:3001/pizzas')
       .then((res) => res.json())
       .then((data) => {
-        dispatch(setPizzas(data.pizzas));
+        dispatch(setPizzas(data));
       });
   }, [dispatch]);
 
