@@ -10,6 +10,13 @@ import Cart from './pages/Cart';
 function App() {
   const dispatch = useDispatch();
 
+  window.test = () => {
+    fetch('http://localhost:3000/db.json')
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setPizzas(data.pizzas));
+      });
+  };
   React.useEffect(() => {
     fetch('http://localhost:3000/db.json')
       .then((res) => res.json())

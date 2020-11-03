@@ -3,10 +3,12 @@ const initialState = {
   sortBy: 'popular',
 };
 
-const filtersReducer = (state = initialState, action) => {
-  switch (action.type) {
+const filtersReducer = (state = initialState, { type, payload }) => {
+  switch (type) {
     case 'SET_SORT':
-      return { ...state, sortBy: action.payload };
+      return { ...state, sortBy: payload };
+    case 'SET_CATEGORY':
+      return { ...state, category: payload };
     default:
       return state;
   }
