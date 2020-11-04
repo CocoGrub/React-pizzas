@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames';
 
+
 function PizzaBlock({name,imageUrl,price,types,sizes}) {
+
     const [activeType,setActiveType]=useState(types[0])
     const [activeSize,setActiveSize]=useState(sizes[0])
     
@@ -74,8 +76,10 @@ imageUrl:PropTypes.string.isRequired,
 price:PropTypes.number.isRequired,
 types:PropTypes.arrayOf(PropTypes.number).isRequired,
 sizes:PropTypes.arrayOf(PropTypes.number).isRequired,
+
 }
 PizzaBlock.defaultProps={
-  types:[]
+  types:[],
+
 }
 export default PizzaBlock

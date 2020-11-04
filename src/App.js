@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Route } from 'react-router-dom';
 import './App.css';
-import { setPizzas } from './redux/actions/pizzas';
+import { fetchPizzas } from './redux/actions/pizzas';
 import { Header } from './components/index';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
@@ -11,19 +11,11 @@ function App() {
   const dispatch = useDispatch();
 
   window.test = () => {
-    fetch('http://localhost:3000/db.json')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(setPizzas(data.pizzas));
-      });
+    dispatch(fetchPizzas());
   };
   React.useEffect(() => {
-    fetch('http://localhost:3001/pizzas')
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(setPizzas(data));
-      });
-  }, [dispatch]);
+    dispatch(fetchPizzas());
+  }, []);
 
   return (
     <div className="App">
