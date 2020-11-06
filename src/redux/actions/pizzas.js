@@ -5,12 +5,17 @@ export const setPizzas = (items) => ({
   payload: items,
 });
 
-export const fetchPizzas = () => (dispatch) => {
-  axios.get('http://localhost:3001/pizzas').then(({ data }) => {
-    console.log('fetchpizzas', data);
+export const fetchPizzas = (category, sortBy) => (dispatch) => {
+  axios.get(`http://localhost:3001/pizzas?category=${category}`).then(({ data }) => {
+    console.log(data);
     dispatch(setPizzas(data));
   });
 };
+
+export const setLoaded = (payload) => ({
+  type: 'SET_LOADED',
+  payload,
+});
 
 export const setCategory = (catIndex) => ({
   type: 'SET_CATEGORY',
