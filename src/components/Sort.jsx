@@ -2,10 +2,12 @@ import React,{useState,useEffect,useRef} from 'react'
 import PropTypes from 'prop-types'
 
 const Sort = React.memo(({data,onClickSortType,activeSortType}) => {
+  
   const [popup,setPopup]=useState(false)
   const sortRef=useRef()
 
-  const activeLabel=data.find((x)=>x.type===activeSortType).name
+  const activeLabel=data.find((x)=>x.type===activeSortType.type).name
+
   
 
   useEffect(()=>{
@@ -13,14 +15,12 @@ const Sort = React.memo(({data,onClickSortType,activeSortType}) => {
   },[])
 
   const hideItemsAfterSelect=(index)=>{
-    onClickSortType(data[index].type)
-    console.log(data[index].type);
+    onClickSortType(data[index])
     setPopup(false)
   }
 
   const setVisible=(e)=>{
     setPopup(!popup)}
-    
     const domListener=(e)=>{
     if(sortRef.current &&!sortRef.current.contains(e.target)){ //sortRef.current && react-router Link fixed
          setPopup(false)
@@ -48,7 +48,7 @@ const Sort = React.memo(({data,onClickSortType,activeSortType}) => {
         <ul>
           {data.map((item,index)=>{
             return(
-            <li className={index===activeSortType?'active':''} 
+            <li className={index===activeSortType?'active':''} //fix???
                 key={item+index}
                 onClick={()=>{hideItemsAfterSelect(index)}}
                 >{item.name}</li>
@@ -63,9 +63,10 @@ const Sort = React.memo(({data,onClickSortType,activeSortType}) => {
 Sort.propTypes={
   data:PropTypes.array.isRequired,
   onClickSortType:PropTypes.func.isRequired,
-  activeSortType:PropTypes.string.isRequired
+  // activeSortType:PropTypes.string.isRequired
 }
 Sort.defaultProps={
-  data:[]
+  data:[],
+  activeSortType:' '
 }
 export default Sort

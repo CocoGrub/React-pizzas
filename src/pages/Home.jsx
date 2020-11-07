@@ -6,14 +6,15 @@ import {setCategory,SetSortBy} from '../redux/actions/filters'
 import {fetchPizzas} from '../redux/actions/pizzas'
 const pizzaTypes = ['Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые']
 const sortTypes = [
-                  {name:'Популярности',type:'popular'},  
-                  {name:'Цене',type:'price'},
-                  {name:'Aлфавиту',type:'alphabet'},]
+                  {name:'Популярности',type:'popular',order:'desc'},  
+                  {name:'Цене',type:'price',order:'desc'},
+                  {name:'Aлфавиту',type:'name',order:'asc'},]
 
 const Home = () => {
   const  items  = useSelector((state) => state.pizzas.items)
   const  isLoaded  = useSelector((state) => state.pizzas.isLoaded)
   const  {category,sortBy}  = useSelector((state) => state.filters)
+
 
   const dispatch=useDispatch()
   
@@ -24,8 +25,8 @@ const Home = () => {
     dispatch(SetSortBy(type))},[])
 
   React.useEffect(() => {
-    dispatch(fetchPizzas(category));
-  }, [category]); //category меняется при изменении фильтра, юзЕффект срабатывает при первом ренедере и при изменении категории
+    dispatch(fetchPizzas(category,sortBy));
+  }, [category,sortBy]); //category меняется при изменении фильтра, юзЕффект срабатывает при первом ренедере и при изменении категории
   
     
   // const onSelectCategory=(index)=>{
