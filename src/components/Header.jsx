@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom'
 import logo from '../assets/img/pizza-logo.svg';
 
-class Header extends React.Component{
-    render(){
+function Header() {
+  const {totalPrice,totalCount} = useSelector(({cart})=>cart)
+  console.log(totalPrice);
+
         return <>
         <div className="header">
         <div className="container">
@@ -16,8 +19,6 @@ class Header extends React.Component{
             </div>
           </div>
           </Link>
-
-      
         <div className="header__cart">
             <Link to='/cart' className="button button--cart">
               <span>520 ₽</span>
@@ -59,6 +60,6 @@ class Header extends React.Component{
         </>
        
     }
-}
+
 
 export default Header;
