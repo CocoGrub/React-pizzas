@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from '../Button'
 
 
-function PizzaBlock({name,imageUrl,price,types,sizes}) {
+function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza}) {
 
     const [activeType,setActiveType]=useState(types[0])
     const [activeSize,setActiveSize]=useState(sizes[0])
@@ -19,6 +19,9 @@ function PizzaBlock({name,imageUrl,price,types,sizes}) {
       setActiveSize(index)
     }
 
+    const onAddPizza=()=>{
+      onClickAddPizza({id,name,price,activeType,activeSize})
+    }
     return (
         <div className="pizza-block">
         <img
@@ -47,11 +50,11 @@ function PizzaBlock({name,imageUrl,price,types,sizes}) {
             </li>)}
           
           </ul>
-        </div>
+        </div> 
         <div className="pizza-block__bottom">
           <div className="pizza-block__price">от {price} ₽</div>
           {/* <div className="button button--outline button--add"> */}
-       <Button className="button-add" outline>
+       <Button onClick={onAddPizza} className="button-add" outline>
             <svg
               width="12"
               height="12"

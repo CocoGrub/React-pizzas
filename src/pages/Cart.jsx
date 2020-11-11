@@ -2,7 +2,6 @@ import React from 'react'
 
 const Cart = () => {
     return (
-       
       <div className="content">
       <div className="container container--cart">
         <div className="cart">
@@ -193,7 +192,6 @@ const Cart = () => {
   </div>
 </div>
 </div>
-
           </div>
           <div className="cart__bottom">
             <div className="cart__bottom-details">
