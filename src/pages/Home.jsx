@@ -11,11 +11,12 @@ const sortTypes = [
                   {name:'Цене',type:'price',order:'desc'},
                   {name:'Aлфавиту',type:'name',order:'asc'},]
 
-const Home = () => {
+  const Home = () => {
   const  items  = useSelector((state) => state.pizzas.items)
   const  isLoaded  = useSelector((state) => state.pizzas.isLoaded)
   const  {category,sortBy}  = useSelector((state) => state.filters)
-
+  const  cartItems  = useSelector((state) => state.cart)
+  console.log(cartItems);
 
   const dispatch=useDispatch()
   
@@ -52,8 +53,10 @@ const Home = () => {
         <div className="content__items">
           {isLoaded?items.map((item,index)=>{
             return  <PizzaBlock key={item.name+index}
+            cartItemCount={cartItems.items[index]}
             onClickAddPizza={(item)=>addPizzaToCart(item)}
-             isLoading={true}
+            //  isLoading={true}
+            isLoading
              {...item}  />
           }):Array(12).fill(0).map((_,index)=><PizzaPreLoader key={index}/>)}
         </div>

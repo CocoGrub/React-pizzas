@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import Button from '../Button'
 
 
-function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza}) {
+function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza,cartItemCount}) {
 
     const [activeType,setActiveType]=useState(types[0])
     const [activeSize,setActiveSize]=useState(sizes[0])
@@ -67,7 +67,7 @@ function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza}) {
               />
             </svg>
             <span>Добавить</span>
-            <i>2</i>
+            <i>{cartItemCount?cartItemCount.length:0}</i>
             </Button>
           {/* </div> */}
         </div>
