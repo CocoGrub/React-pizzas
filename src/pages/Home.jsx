@@ -16,7 +16,6 @@ const sortTypes = [
   const  isLoaded  = useSelector((state) => state.pizzas.isLoaded)
   const  {category,sortBy}  = useSelector((state) => state.filters)
   const  cartItems  = useSelector((state) => state.cart)
-  console.log(cartItems);
 
   const dispatch=useDispatch()
   
@@ -53,7 +52,7 @@ const sortTypes = [
         <div className="content__items">
           {isLoaded?items.map((item,index)=>{
             return  <PizzaBlock key={item.name+index}
-            cartItemCount={cartItems.items[index]}
+            cartItemCount={cartItems.items[index]?cartItems.items[index].items.length:0}
             onClickAddPizza={(item)=>addPizzaToCart(item)}
             //  isLoading={true}
             isLoading

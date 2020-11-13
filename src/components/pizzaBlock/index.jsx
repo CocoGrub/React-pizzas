@@ -5,6 +5,7 @@ import Button from '../Button'
 
 
 function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza,cartItemCount}) {
+  
 
     const [activeType,setActiveType]=useState(types[0])
     const [activeSize,setActiveSize]=useState(sizes[0])
@@ -18,9 +19,11 @@ function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza,cartItem
     const changeActiveSize=(index)=>{
       setActiveSize(index)
     }
+    const typeString = availableTypes[activeType]
 
     const onAddPizza=()=>{
-      onClickAddPizza({id,name,price,activeType,activeSize})
+      onClickAddPizza({id,name,price,typeString,activeSize,imageUrl})
+      
     }
     return (
         <div className="pizza-block">
@@ -67,7 +70,7 @@ function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza,cartItem
               />
             </svg>
             <span>Добавить</span>
-            <i>{cartItemCount?cartItemCount.length:0}</i>
+            <i>{cartItemCount?cartItemCount:0}</i>
             </Button>
           {/* </div> */}
         </div>
