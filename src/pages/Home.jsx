@@ -20,10 +20,10 @@ const sortTypes = [
   const dispatch=useDispatch()
   
   const onSelectCategory = React.useCallback((index)=>{
-    dispatch(setCategory(index))},[])
+    dispatch(setCategory(index))},[dispatch])
 
   const onSelectSortType = React.useCallback((type)=>{
-    dispatch(SetSortBy(type))},[])
+    dispatch(SetSortBy(type))},[dispatch])
     
   const addPizzaToCart=(obj)=>{
   dispatch(addPizzaToCartAC(obj))
@@ -32,7 +32,7 @@ const sortTypes = [
 
   React.useEffect(() => {
     dispatch(fetchPizzas(category,sortBy));
-  }, [category,sortBy]); //category меняется при изменении фильтра, юзЕффект срабатывает при первом ренедере и при изменении категории
+  }, [category,sortBy,dispatch]); //category меняется при изменении фильтра, юзЕффект срабатывает при первом ренедере и при изменении категории
   
     
   // const onSelectCategory=(index)=>{

@@ -1,4 +1,3 @@
-
 import {Link} from 'react-router-dom'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +6,7 @@ import {clearCartAC,removePizzasGroupAC,removeOne,addOne} from '../redux/actions
 import cartEmptyIMG from '../../src/assets/img/empty-cart.png'
 const Cart = () => {
   const {totalPrice,totalCount,items}=useSelector(({cart})=>cart)
-  const pizzasTypes=Object.keys(items).map((x)=>{return items[x].items[0]})
+  // const pizzasTypes=Object.keys(items).map((x)=>{return items[x].items[0]})
 
   const dispatch = useDispatch()
 
@@ -25,7 +24,7 @@ const Cart = () => {
     dispatch(removeOne(id))
   }
   function addOnePizza(id) {
-    addOne(id)
+    dispatch(addOne(id))
   }
 
   const addedPizzas = Object.keys(items).map((key) => {
@@ -114,8 +113,8 @@ const Cart = () => {
                     key={obj.id}
                     id={obj.id}
                     name={obj.name}
-                    type={obj.type}
-                    size={obj.size}
+                    type={obj.typeString}
+                    size={obj.activeSize}
                     totalPrice={items[obj.id].totalPrice}
                     totalCount={items[obj.id].items.length}
                     removePizzasGroup={removePizzasGroup}

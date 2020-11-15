@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../components/Button'
 const CartItem=({name,type,size,totalPrice,totalCount,removePizzasGroup,id,onRemove,onAdd})=>{
-
+console.log(type);
  const rmPizza=()=>{
     onRemove(id)
   }
