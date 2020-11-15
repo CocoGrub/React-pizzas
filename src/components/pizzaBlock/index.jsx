@@ -79,13 +79,17 @@ function PizzaBlock({id,name,imageUrl,price,types,sizes,onClickAddPizza,cartItem
 }
 
 PizzaBlock.propTypes={
+id:PropTypes.number.isRequired,
 name:PropTypes.string.isRequired,
 imageUrl:PropTypes.string.isRequired,
 price:PropTypes.number.isRequired,
 types:PropTypes.arrayOf(PropTypes.number).isRequired,
 sizes:PropTypes.arrayOf(PropTypes.number).isRequired,
+onClickAddPizza:PropTypes.func.isRequired,
+cartItemCount:PropTypes.number.isRequired,
 
 }
+
 PizzaBlock.defaultProps={
   types:[],
 
