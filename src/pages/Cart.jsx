@@ -8,11 +8,9 @@ import cartEmptyIMG from '../../src/assets/img/empty-cart.png'
 const Cart = () => {
   const {totalPrice,totalCount,items}=useSelector(({cart})=>cart)
   const pizzasTypes=Object.keys(items).map((x)=>{return items[x].items[0]})
-  
-  
-
 
   const dispatch = useDispatch()
+
   function clearCart() {
     if(window.confirm('Вы действительно хотите очистить корзину?')){
       dispatch(clearCartAC())
@@ -22,6 +20,14 @@ const Cart = () => {
   function removePizzasGroup(id) {
     dispatch(removePizzasGroupAC(id))
   }
+
+  function removeOnePizza(id) {
+    dispatch(removeOne(id))
+  }
+  function addOnePizza(id) {
+    addOne(id)
+  }
+
   const addedPizzas = Object.keys(items).map((key) => {
     return items[key].items[0];
   });
@@ -113,8 +119,8 @@ const Cart = () => {
                     totalPrice={items[obj.id].totalPrice}
                     totalCount={items[obj.id].items.length}
                     removePizzasGroup={removePizzasGroup}
-                    // onRemove={onRemoveItem}
-                    // onMinus={onMinusItem}
+                    onRemove={removeOnePizza}
+                    onAdd={addOnePizza}
                     // onPlus={onPlusItem}
                   />
                 ))}
