@@ -1,8 +1,4 @@
 react + redux PizzasMarket
 design not mine,look at description
 
-to start project type:
-yarn server
-
-and in another terminal
-yarn start
+yarn start to run the server and project concurrently
