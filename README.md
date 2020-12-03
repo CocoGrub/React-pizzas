@@ -1,4 +1,7 @@
-react + redux PizzasMarket
-design not mine,look at description
+### react + redux PizzasMarket
 
-yarn start to run the server and project concurrently
+### дизайн позаимствован
+
+### задеплоить на хероку не смог, а на gh pages не работает из-за json-server для хранения своих данных
+
+### что бы запустить, yarn start в консоли
